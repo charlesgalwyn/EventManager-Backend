@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const Event = require("../Models/events");
 
-// get all the events
 router.get("/", async (req, res) => {
   try {
     const events = await Event.find();
@@ -11,7 +10,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// get a single event
 router.get("/:id", async (req, res) => {
   try {
     const event = await Event.findById(req.params.id).populate(["pending",  "attendees"]);
